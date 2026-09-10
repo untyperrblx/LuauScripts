@@ -1,7 +1,7 @@
 --!strict
 --!optimize 2
 
--- Random Library without Roblox Dependencies
+-- Random Library without Roblox Dependencies (v0.1)
 -- (https://create.roblox.com/reference/engine/datatypes/Random)
 
 -- Clones math library to become writable
@@ -19,7 +19,7 @@ MathClone.random = function(min: number?, max: number?): number
     return n
 end
 
-getfenv().math = MathClone
+getfenv().math = table.freeze(MathClone)
 
 -- Types
 type Random = {
@@ -93,14 +93,21 @@ function Random.new(seed: number?): Random
     end
     RandomObject.NextNumber = NextNumber
 
+    --[[
+        Returns a normalized, pseudorandom vector with 3 axes.
+    ]]
     local function NextUnitVector(self: Random): vector
-        local p = {}
-        for i = 1, 3 do
+        local p: {number} = {}
+
+        local function randomCoord(i: number): number
             if seed then
-                local seed2 = (seed :: number) + i - 1
-                math.randomseed(seed2)
+                math.randomseed(seed + i - 1)
             end
-            p[i] = NextNumber(self)
+            return math.random()
+        end
+
+        for i = 1, 3 do
+            p[i] = randomCoord(i)
         end
 
         local x, y, z = table.unpack(p)
@@ -109,6 +116,9 @@ function Random.new(seed: number?): Random
     end
     RandomObject.NextUnitVector = NextUnitVector
 
+    --[[
+        Clones the Random object.
+    ]]
     local function Clone(self: Random): Random
         local Cloned = table.clone(RandomObject)
         return table.freeze(Cloned) :: Random
