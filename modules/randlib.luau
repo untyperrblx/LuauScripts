@@ -1,6 +1,8 @@
 --!strict
 --!optimize 2
 
+-- TODO: add `Shuffle` method and other custom methods unrelated to Roblox's library
+
 -- Random Library without Roblox Dependencies (v0.1)
 -- (https://create.roblox.com/reference/engine/datatypes/Random)
 
