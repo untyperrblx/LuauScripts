@@ -159,7 +159,6 @@ function base64.decode(encoded: string): string
 	encoded = string.gsub(encoded, '=', '')
 	
 	local reverseMap = swapTable(mapping)
-	local decodeBits = buffer.create(string.len(encoded))
 
 	local bitstream = ''
 	local dtimes = 0
