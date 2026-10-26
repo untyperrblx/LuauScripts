@@ -19,6 +19,10 @@ const maxBitsDecode = 8
 const baseMultiple = 4
 const padding = '='
 
+local function dprint<T>(...: T)
+	if _debug then print(...) end
+end
+
 local mapping: { [number]: string } = {}
 
 -- automated character mapping because too repetitive
@@ -60,10 +64,6 @@ local function binaryToByte(binary: string): number
 		error(`Attempted to encode invalid binary - parameter: ""{newByte}""`)
 	end
 	return newByte
-end
-
-local function dprint<T>(...: T)
-	if _debug then print(...) end
 end
 
 -- Swaps the table's keys and values
@@ -163,7 +163,7 @@ function base64.decode(encoded: string): string
 	local bitstream = ''
 	local dtimes = 0
 	
-	local encLength = string.len(encoded) -- length is 4 if `Cat`
+	local encLength = string.len(encoded)
 	for i = 1, encLength do
 		-- Gets the character from an index, finds the mapped number, and converts into binary
 		local char = string.sub(encoded, i, i)
@@ -185,6 +185,8 @@ function base64.decode(encoded: string): string
 	end
 
 	dprint(`Decoding times: {dtimes}`)
+
+	table.clear(reverseMap)
 	
 	return decoded
 end
