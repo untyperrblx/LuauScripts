@@ -158,7 +158,7 @@ function base64.decode(encoded: string): string
 	-- Remove padding (=)
 	encoded = string.gsub(encoded, '=', '')
 	
-	local reverseMap = swapTable(mapping)
+	local reverseMap = swapTable<<number, string>>(mapping)
 
 	local bitstream = ''
 	local dtimes = 0
