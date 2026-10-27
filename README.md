@@ -2,9 +2,11 @@
 
 Scripts and modules in Luau that I made for fun or when I felt bored
 
-The current moduels can be found inside [`modules`](./modules/).
+The current modules can be found inside [`modules`](./modules/).
 
-The older modules can be found in [`legacy`](./legacy/).
+Modules specifically developed in [**_Lute_**](https://lute.lune.org) can be found inside [`lute`](./lute/)
+
+The older modules can be found inside [`legacy`](./legacy/).
 
 # Modules
 ### Current
@@ -12,6 +14,12 @@ The following modules are recently developed and completely functional for use.
 
 - [Randlib](./modules/randlib.luau) - A custom pseudorandom number generator module inspired by Roblox's `Random` library
 - [Base64](./modules/base64.luau) - A module that encodes/decodes data into [base 64](https://en.wikipedia.org/wiki/Base64)
+
+### Lute
+The following modules are developed specifically for [Lute](https://lute.lune.org).
+You can only run these by downloading Lute with the following installation [instructions](https://lute.luau.org/guide/installation.html).
+
+- TBD
 
 ### Legacy
 The following modules are very outdated and/or deprecated.
