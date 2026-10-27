@@ -3,9 +3,6 @@
 
 -- Base64 Library
 
--- Note: I assume there's a more optimized way of encoding/decoding with
--- more usage of the `bit32` library but I'm too lazy and dumb to learn so :)
-
 type Base64Lib = {
 	encode: (input: string) -> string,
 	decode: (encoded: string) -> string,
